@@ -1,2 +1,2 @@
-# hello_world
+# MyPythonWaffles
 This is my sample repository.
