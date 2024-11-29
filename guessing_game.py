@@ -18,7 +18,6 @@ if 'guess_history' not in st.session_state:
 
 def ai_guessing_game():
     st.session_state.guesses = 0
-    # The question could be dynamically generated or fixed for now (for example: guessing an animal)
     st.session_state.target = random.choice(["dog", "cat", "elephant", "tiger", "giraffe"])
     st.session_state.hints = []
 
@@ -35,7 +34,7 @@ def ai_guessing_game():
                 st.chat_message("assistant").markdown("Congratulations! You've guessed the animal.")
                 break
             else:
-                # Providing a hint using a simple AI prompt for natural language processing
+                # Providing a hint
                 hint = get_hint(user_guess)
                 st.chat_message("assistant").markdown(f"Hint: {get_hint(user_guess)}")
         st.session_state.guesses += 1
@@ -44,7 +43,7 @@ def ai_guessing_game():
     return st.session_state.guesses
 
 
-# OpenAI API call for generating hints or evaluating guesses
+# OpenAI API call for generating hints
 def get_hint(user_guess):
     prompt = f"Is the animal I am thinking of a {user_guess}? Please provide a hint for the user."
     response = openai.Completion.create(
